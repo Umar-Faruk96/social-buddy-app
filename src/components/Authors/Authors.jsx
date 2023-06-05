@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
+//? comment author component
 const Authors = ({ commentId }) => {
   const [authors, setAuthors] = useState([]);
   useEffect(() => {

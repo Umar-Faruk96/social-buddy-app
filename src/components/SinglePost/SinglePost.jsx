@@ -3,11 +3,13 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../Comments/Comments";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 const SinglePost = () => {
   const { postId } = useParams();
   const url = `https://jsonplaceholder.typicode.com/posts/${postId}`;
 
+  //? single post state
   const [singlePost, setSinglePost] = useState({});
   useEffect(() => {
     fetch(url)
@@ -17,8 +19,10 @@ const SinglePost = () => {
   }, []);
 
   const { title, body } = singlePost;
-
   // console.log(singlePost);
+
+  //? like post state
+  const [likePost, setLikePost] = useState("");
 
   return (
     <Container maxWidth="md lg" component="main" sx={{ my: 3 }}>
@@ -32,7 +36,7 @@ const SinglePost = () => {
             component="h2"
             sx={{ textAlign: "center", color: "primary.main" }}
           >
-            Posts Shown : ({postId})
+            Individual Post Id : ({postId})
           </Typography>
           {/* Section Content */}
           <Box
@@ -51,9 +55,18 @@ const SinglePost = () => {
               {title}
             </Typography>
             {/* Post Description */}
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            <Typography
+              variant="body1"
+              sx={{ textAlign: "justify" }}
+              gutterBottom
+            >
               {body}
             </Typography>
+            {/* Like Functionality */}
+            <ThumbUpIcon
+              onClick={() => setLikePost(likePost ? "" : "primary")}
+              color={likePost}
+            />
           </Box>
         </Grid2>
 

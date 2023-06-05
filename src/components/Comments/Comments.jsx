@@ -33,14 +33,14 @@ const Comments = ({ postId }) => {
           spacing={1}
           sx={{ border: 1, borderColor: "grey.400", borderRadius: 2, my: 2.5 }}
         >
-          {/* Author Section */}
+          {/* Author image Section */}
           <Grid2 lg={4}>
             <Authors commentId={comment.id} key={comment.id} />
           </Grid2>
 
           {/* Author Comment */}
           <Grid2 lg={8}>
-            <Comment comment={comment} key={comment.id} />
+            <Comment comment={comment} key={postId} />
           </Grid2>
         </Grid2>
       ))}
